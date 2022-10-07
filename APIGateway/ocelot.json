@@ -1,0 +1,54 @@
+{
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/api/Patient/AddPatientInfo",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "44360"
+        }
+      ],
+      "UpstreamPathTemplate": "/getPatient",
+      "Key": "patient"
+    },
+    {
+      "DownstreamPathTemplate": "/api/Emergency/EmergencyInfo",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "44360"
+        }
+      ],
+      "UpstreamPathTemplate": "/getEmergency",
+      "Key": "emergency"
+    },
+    {
+      "DownstreamPathTemplate": "/api/Allergy/AddAllergyInfo",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "44360"
+        }
+      ],
+      "UpstreamPathTemplate": "/getAllergy",
+      "Key": "Allergy"
+    }
+  ],
+  "Aggregates": [
+    {
+      "ReRouteKeys": [
+        "patient",
+        "emergency",
+        "Allergy"
+      ],
+      "UpstreamPathTemplate": "/UserAndProduct"
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:44379/"
+  }
+}
+
